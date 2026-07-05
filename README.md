@@ -182,16 +182,37 @@ Visit **http://localhost:3000** in your browser.
 
 ---
 
-## 🌐 Deployment
+## 🚀 Deploy to Vercel
 
-The project is designed for **Google Cloud Run** deployment via AI Studio, but can be deployed on any Node.js-compatible host (Railway, Render, Fly.io, etc.).
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bhupesh3012/career-pilot)
+
+### One-click deploy
+
+1. Click the button above — or go to [vercel.com/new](https://vercel.com/new) and import `bhupesh3012/career-pilot`
+2. Vercel auto-detects the config from `vercel.json` — no framework preset needed
+3. Add your environment variable in **Settings → Environment Variables**:
+
+| Name | Value |
+|---|---|
+| `GEMINI_API_KEY` | your Google Gemini API key |
+
+4. Click **Deploy** — done ✅
+
+### How it works on Vercel
+
+| Part | How Vercel handles it |
+|---|---|
+| Frontend (React + Vite) | Built via `npm run build` → served as static assets from `dist/` |
+| API routes (`/api/*`) | `api/index.ts` runs as a Node.js serverless function (max 30s timeout) |
+| Client-side routing | All unmatched routes rewrite to `index.html` |
+
+### Local development (unchanged)
 
 ```bash
-npm run build
-npm run start
+npm install
+cp .env.example .env.local   # add your GEMINI_API_KEY
+npm run dev                  # Express + Vite dev server on http://localhost:3000
 ```
-
-The Express server in `server.ts` serves both the Vite-built frontend and the API routes from a single process.
 
 ---
 
