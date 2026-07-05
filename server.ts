@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json({ limit: "15mb" }));
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT || "3000", 10);
 
 // Lazy initialization of Gemini SDK
 let aiInstance: GoogleGenAI | null = null;
@@ -369,7 +369,7 @@ function generateInterviewEvaluationBackup(question: string, answer: string, tar
 }
 
 function generateCoverLetterBackup(companyName: string, roleDescription: string, jobDescription: string, candidateName?: string, experienceLevel?: string) {
-  const name = candidateName || "Bhupesh";
+  const name = candidateName || "Candidate";
   const role = roleDescription || "Technical Lead";
   const company = companyName || "Target Company";
   const exp = experienceLevel || "Mid-Level";
@@ -568,7 +568,7 @@ function generateResumeAnalysisBackup(pdfBase64: string, targetRole?: string, cu
     const prefix = extracted.email.split("@")[0].split(".")[0].split("-")[0];
     name = prefix.charAt(0).toUpperCase() + prefix.slice(1);
   } else if (name === "Professional Candidate") {
-    name = "Bhupesh";
+    name = "Candidate";
   }
 
   const bulletPoints = [
@@ -1133,7 +1133,7 @@ app.post("/api/cover-letter/generate", async (req, res) => {
 
     const ai = getGemini();
     const prompt = `
-      Write a highly personalized, compelling, and professionally formatted cover letter for a candidate named "${candidateName || "Bhupesh"}" targeting the role of "${roleDescription}" at "${companyName}".
+      Write a highly personalized, compelling, and professionally formatted cover letter for a candidate named "${candidateName || "Candidate"}" targeting the role of "${roleDescription}" at "${companyName}".
       The candidate is at a "${experienceLevel || "Mid-Level"}" tier.
       
       Integrate and align their skillset to match the following Job Description requirements:
@@ -1146,7 +1146,7 @@ app.post("/api/cover-letter/generate", async (req, res) => {
       - Catchy and confident opening paragraph
       - 2 structured body paragraphs mapping the candidate's core expertise (architectural scalability, reliable state handling, and automated transaction consistency) directly to the JD requirements
       - A high-impact closing statement detailing proactive interest in an interview
-      - Professional sign-off (e.g., 'Sincerely, \\n${candidateName || "Bhupesh"}')
+      - Professional sign-off (e.g., 'Sincerely, \\n${candidateName || "Candidate"}')
       
       Generate the response in JSON with a single "coverLetter" text field containing the formatted text.
     `;
