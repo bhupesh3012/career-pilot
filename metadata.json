@@ -1,0 +1,6 @@
+{
+  "name": "CareerPilot",
+  "description": "A high-performance, AI-driven career platform and co-pilot for professional growth.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

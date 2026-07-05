@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* CareerPilot Brand Colors mapping */
+  --color-surface-bg: #11131b;
+  --color-surface-dim: #11131b;
+  --color-surface-bright: #373942;
+  --color-surface-container-lowest: #0c0e16;
+  --color-surface-container-low: #191b23;
+  --color-surface-container: #1d1f27;
+  --color-surface-container-high: #282a32;
+  --color-surface-container-highest: #32343d;
+  --color-on-surface: #e1e2ed;
+  --color-on-surface-variant: #c3c6d7;
+  --color-outline: #8d90a0;
+  --color-outline-variant: #434655;
+  --color-brand-primary: #b4c5ff;
+  --color-on-primary: #002a78;
+  --color-brand-primary-container: #2563eb;
+  --color-on-primary-container: #eeefff;
+  --color-brand-secondary: #c3c0ff;
+  --color-brand-tertiary: #ffb596;
+}
+
+/* Custom modern animations & utility classes */
+@layer utilities {
+  .glow-border {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glow-border:hover {
+    border-color: rgba(180, 197, 255, 0.35);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #b4c5ff 0%, #c3c0ff 50%, #ffb596 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gradient-ai-btn {
+    background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+    transition: all 0.2s ease-in-out;
+  }
+  .gradient-ai-btn:hover {
+    filter: brightness(1.1);
+  }
+}
+
+/* Glassmorphism utility */
+.glass-overlay {
+  background: rgba(29, 31, 39, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body {
+  background-color: var(--color-surface-bg);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Light Theme support overrides */
+:root.light, .light {
+  --color-surface-bg: #f8fafc;
+  --color-surface-dim: #f1f5f9;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-container: #ffffff;
+  --color-surface-container-high: #e2e8f0;
+  --color-surface-container-highest: #cbd5e1;
+  --color-on-surface: #0f172a;
+  --color-on-surface-variant: #334155;
+  --color-outline: #64748b;
+  --color-outline-variant: #cbd5e1;
+  --color-brand-primary: #1d4ed8;
+  --color-on-primary: #ffffff;
+  --color-brand-primary-container: #3b82f6;
+  --color-on-primary-container: #eff6ff;
+  --color-brand-secondary: #4f46e5;
+  --color-brand-tertiary: #ea580c;
+}
+
+/* Flattened CSS for light theme overrides to support all environments */
+.light .bg-\[\#0c0e16\],
+.light .bg-\[\#0c0e16\]\/40,
+.light .bg-\[\#0c0e16\]\/80 {
+  background-color: #f1f5f9 !important;
+}
+
+.light .bg-\[\#11131b\] {
+  background-color: #f8fafc !important;
+}
+
+.light .bg-\[\#1d1f27\] {
+  background-color: #ffffff !important;
+}
+
+.light .bg-\[\#1d1f27\]\/80 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.light .bg-\[\#191b23\],
+.light .bg-\[\#191b23\]\/30,
+.light .bg-\[\#191b23\]\/60 {
+  background-color: #e2e8f0 !important;
+}
+
+.light .bg-surface-bg {
+  background-color: #f8fafc !important;
+}
+
+.light .bg-surface-dim {
+  background-color: #f1f5f9 !important;
+}
+
+.light .text-white {
+  color: #0f172a !important;
+}
+
+.light .text-\[\#e1e2ed\] {
+  color: #1e293b !important;
+}
+
+.light .text-\[\#c3c6d7\] {
+  color: #334155 !important;
+}
+
+.light .text-\[\#8d90a0\] {
+  color: #64748b !important;
+}
+
+.light .text-brand-primary {
+  color: #1d4ed8 !important;
+}
+
+.light .text-brand-secondary {
+  color: #4f46e5 !important;
+}
+
+.light .text-brand-tertiary {
+  color: #ea580c !important;
+}
+
+.light .border-\[\#434655\]\/10,
+.light .border-\[\#434655\]\/15,
+.light .border-\[\#434655\]\/20,
+.light .border-\[\#434655\]\/30 {
+  border-color: rgba(203, 213, 225, 0.6) !important;
+}
+
+.light .stroke-\[\#11131b\] {
+  stroke: #e2e8f0 !important;
+}
+
+.light .hover\:bg-\[\#191b23\]:hover {
+  background-color: #cbd5e1 !important;
+}
+
+.light .hover\:bg-\[\#282a32\]:hover {
+  background-color: #cbd5e1 !important;
+}
+
